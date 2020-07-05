@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api
+  labels:
+    app: api
+spec:
+  containers:
+    - name: api
+      image: airflowbook/movielens-api
+      env:
+        - name: API_USER
+          value: airflow
+        - name: API_PASSWORD
+          value: airflow

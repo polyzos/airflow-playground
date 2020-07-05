@@ -18,7 +18,7 @@ services:
 
     webserver:
         container_name: airflow
-        image: puckel/docker-airflow:1.10.9
+        image: puckel/docker-airflow
         restart: always
         depends_on:
             - postgres
@@ -40,3 +40,13 @@ services:
             interval: 30s
             timeout: 30s
             retries: 3
+    movielens:
+        build: api
+        image: airflowbook/movielens-api
+        ports:
+            - "5000:5000"
+#        networks:
+#            - airflow
+        environment:
+            API_USER: airflow
+            API_PASSWORD: airflow
